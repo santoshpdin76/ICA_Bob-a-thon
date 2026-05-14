@@ -1,0 +1,248 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-black) 0%, var(--color-gray-900) 50%, var(--color-black) 100%);
+  padding: var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+
+  // Decorative gold accents
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    animation: float 25s ease-in-out infinite reverse;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(50px, 50px);
+  }
+}
+
+.login-container {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-card {
+  background: linear-gradient(135deg, var(--color-gray-900) 0%, var(--color-black) 100%);
+  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-3xl);
+  box-shadow: var(--shadow-gold), var(--shadow-xl);
+  
+  @media (max-width: 768px) {
+    padding: var(--spacing-xl);
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  
+  .login-icon {
+    color: var(--color-gold);
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  h1 {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  p {
+    color: var(--text-secondary);
+    font-size: var(--text-base);
+    margin-bottom: 0;
+  }
+}
+
+.error-notification {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+
+  .error-icon {
+    font-size: var(--text-xl);
+    flex-shrink: 0;
+  }
+
+  .error-content {
+    flex: 1;
+
+    strong {
+      display: block;
+      color: var(--color-error);
+      font-weight: var(--font-semibold);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      margin: 0;
+    }
+  }
+
+  .error-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: var(--text-2xl);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-error);
+    }
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+
+  label {
+    color: var(--text-gold);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    background-color: var(--color-gray-800);
+    border: 1px solid var(--border-secondary);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: var(--text-base);
+    transition: all var(--transition-fast);
+
+    &::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    &:hover {
+      border-color: var(--border-light);
+    }
+  }
+}
+
+.login-button {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--color-black);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+  margin-top: var(--spacing-md);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold), var(--shadow-lg);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.login-footer {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border-secondary);
+  
+  p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--text-sm);
+    
+    li {
+      padding: var(--spacing-sm) 0;
+      color: var(--text-secondary);
+      text-align: center;
+      
+      strong {
+        color: var(--text-gold);
+        font-weight: var(--font-semibold);
+      }
+    }
+  }
+}
+
+// Made with Bob
