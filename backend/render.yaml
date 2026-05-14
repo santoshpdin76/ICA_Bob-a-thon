@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: ppm-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ppm-database
+          property: connectionString
+      - key: CORS_ORIGIN
+        value: https://your-app.netlify.app
+
+databases:
+  - name: ppm-database
+    databaseName: ppm_db
+    user: ppm_user
+    plan: free
+
+# Made with Bob
